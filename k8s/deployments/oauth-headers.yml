@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: oauth-headers
+  name: oauth-headers
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: oauth-headers
+  template:
+    metadata:
+      labels:
+        run: oauth-headers
+    spec:
+      containers:
+        - image: evfirerob/oauth-headers:latest
+          name: oauth-headers
+          ports:
+          - containerPort: 8080
+            protocol: TCP
